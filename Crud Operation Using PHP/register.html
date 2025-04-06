@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Registration Form</h2>
+
+        <form id="registration-form" action="process_register.php" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="number" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age">
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="radio-group">
+                    <input type="radio" name="gender" value="Male" required> Male
+                    <input type="radio" name="gender" value="Female" required> Female
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="form-group">
+                <label>Skills:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" name="skills[]" value="Java"> Java
+                    <input type="checkbox" name="skills[]" value="C++"> C++
+                    <input type="checkbox" name="skills[]" value="Python"> Python
+                    <input type="checkbox" name="skills[]" value="C">C 
+                    <input type="checkbox" name="skills[]" value="sql">SQL
+                </div>
+            </div>
+            
+
+            <!-- Buttons -->
+            <div class="button-container">
+                <div>
+                    <button type="submit">Insert</button>
+                    <button type="button" onclick="updateRecord()">Update</button>
+                </div>
+                <div>
+                    <button type="button" onclick="deleteRecord()">Delete</button>
+                    <button type="button" onclick="displayRecords()">Display</button>
+                </div>
+            </div>
+           
+             <!-- Display Popup -->
+<div id="display-popup" class="popup">
+    <div class="popup-content">
+        <p>Select Skill to Display:</p>
+        <select id="display-skill">
+            <option value="Java">Java</option>
+            <option value="C++">C++</option>
+            <option value="Python">Python</option>
+        </select>
+        <button onclick="confirmDisplay()">OK</button>
+        <button onclick="closeDisplayPopup()">Cancel</button>
+    </div>
+</div>
+    <!-- Update Popup -->
+<div id="update-popup" class="popup">
+    <div class="popup-content">
+        <p>Enter your email to update:</p>
+        <input type="email" id="update-email" placeholder="Enter Email">
+        <button onclick="fetchRecord()">OK</button>
+        <button onclick="closeUpdatePopup()">Cancel</button>
+    </div>
+</div>
+        </form>
+    </div>
+
+   <!-- Popup -->
+   <div id="popup" class="popup">
+    <div class="popup-content">
+        <p id="popup-message"></p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+<!-- Delete Popup -->
+<div id="delete-popup" class="popup">
+    <div class="popup-content">
+        <p>Enter the age to delete:</p>
+        <input type="number" id="delete-age" placeholder="Enter age">
+        <button onclick="confirmDelete()">OK</button>
+        <button onclick="closeDeletePopup()">Cancel</button>
+    </div>
+</div>
+    <script>
+        function showPopup(message) {
+            document.getElementById("popup-message").innerText = message;
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            window.location.href = 'register.html';
+        }
+
+        // Check for PHP message
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            if (message) {
+                showPopup(message);
+            }
+        });
+
+        function deleteRecord() {
+            document.getElementById("delete-popup").style.display = "flex";
+        }
+    
+        function confirmDelete() {
+            let age = document.getElementById("delete-age").value;
+            if (age !== null && age !== "") {
+                window.location.href = "delete.php?age=" + age;
+            }
+        }
+    
+        function closeDeletePopup() {
+            document.getElementById("delete-popup").style.display = "none";
+        }
+        function displayRecords() {
+            document.getElementById("display-popup").style.display = "flex";
+        }
+    
+        function confirmDisplay() {
+            let skill = document.getElementById("display-skill").value;
+            window.location.href = "display.php?skill=" + skill;
+        }
+    
+        function closeDisplayPopup() {
+            document.getElementById("display-popup").style.display = "none";
+        }
+        function updateRecord() {
+            document.getElementById("update-popup").style.display = "flex";
+        }
+    
+        function fetchRecord() {
+            let email = document.getElementById("update-email").value;
+            if (email !== "") {
+                window.location.href = "update_form.php?email=" + email;
+            }
+        }
+    
+        function closeUpdatePopup() {
+            document.getElementById("update-popup").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
