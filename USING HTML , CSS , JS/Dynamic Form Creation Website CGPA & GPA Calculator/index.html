@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta chartset="UTF-8">
+        <meta name="viewport" content="width=device-width ,initial-scale=1.0">
+        <title>Calculator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        
+         <div class="Container">
+        <!--GPA Calculator Section-->
+        <table>
+            <tr>
+                <td class="cal" > 
+        <div class="box" >
+            <h3>GPA Calculator</h3>
+            <label for="semesterCount">Semester Number:</label>
+            <input type="integer" id="semesterCount" placeholder="Enter semester">
+            <br><br><label for="subjectCount">Number of Subjects:</label>
+            <input type="integer" id="subjectCount" placeholder="Enter the number of subjects">
+            <br><br>
+        <div class="button-container">
+            <button onclick="generateFields()">Submit</button>
+            <div id="subjectInputs"></div>
+            <button onclick="calculategpa()">Calculate</button>
+          </div>  
+            <h3 id="gpaResult"></h3>
+        </div>
+    </td>
+      <td class="cal1">
+        <!--CGPA Calculator Section-->
+        <div class="box" id="cgpa">
+            <h3>CGPA Calculator</h3>
+            <label for="numSemesters">Enter Number of Semesters:</label>
+            <input type="integer" id="numSemesters" placeholder="Enter number of semesters">
+            <button onclick="generateSemesterFields()">Submit</button>
+            <div id="semesterInputs"></div>
+            <br><br>
+            <div class="button-container">
+               
+             <button onclick="resetCGPA()" id="resetBtn">Reset</button>
+             <button onclick="calculateCGPA()"id="submitBtn">Calculate</button>
+            </div>
+            <h3 id="cgpaResult"></h3>
+         </div>
+        </td> 
+        </tr>
+        </table>
+        </div>
+        
+    </body>
+    <script src="script.js"></script>
+</html>

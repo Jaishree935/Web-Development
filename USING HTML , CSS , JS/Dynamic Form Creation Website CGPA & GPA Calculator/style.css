@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('img.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+}
+
+.box {
+    width: 100%;
+    padding: 20px;
+    background:   #E6E6FA;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.cal1{
+     display: flex;
+     justify-content: flex-end;
+     padding-left: 10rem;
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* Center align */
+    gap: 20px; /* Space between buttons */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(39, 112, 126);
+    color: white;
+    border: none;
+    border-radius: 3rem;
+    cursor: pointer;
+}
+ button:hover{
+    background-color: rgb(192, 52, 187);
+ }
+input{
+    margin: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+
+}
+
+/*tABLE STYLING FOR DYNAMIC CREATING*/
+#subjectInputs table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(29, 209, 143);
+    border-color: rgb(29,209,143);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+#subjectInputs th{
+     text-align: center;
+     padding: 12px;
+     font-size: 16px;
+}
+
+#subjectInputs td{
+    padding:6px;
+    text-align: center;
+    font-size: 14px;
+}
+#subjectInputs input{
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+ 
+
+#subjectInputs tr:hover{
+    background-color:rgb(84, 231, 162);
+    transition: background-color 0.3s;
+}
