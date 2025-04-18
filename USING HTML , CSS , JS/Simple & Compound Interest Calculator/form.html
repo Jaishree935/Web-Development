@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>
+Addition of  two numbers
+</title>
+<script>
+ function add(){
+      let a=parseInt(document.getElementById("n1").value);  /*document.getElementById("n1") if have only input object */
+      let b=parseInt(document.getElementById("n2").value);
+      document.getElementById("result").innerHTML = "Result "+(a+b);
+ }
+</script>
+</head>
+<body>
+    <center>
+    <form>
+        <label for="num1">Number1:</label>
+        <input type="text" name="num1" id="n1"><br><br>  
+        <label for="num2">Number2:</label> 
+        <input type="text" name="num2" id="n2"><br><br>
+        <input type="Button" value="Add" onclick="add()">
+        <p id="result">Result: </p>
+    </form>
+    </center>
+</body>
+</html>
+
+
+<!--
+1.BMI Calculate :weight and height as input - with color 
+2.Temperature Convertor: two conversion cel to fah and fah to cel (radio button or dropdown box choose action and perform)
+3.Currency convertor : same as radio or drop down (any 4 currency convertor)
+4.Age Calculator :given date it calculate age 
+5.simple or compound interest calculator
+-->

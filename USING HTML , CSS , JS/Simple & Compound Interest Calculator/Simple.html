@@ -1,0 +1,124 @@
+<html>
+  <head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>
+      Simple and Compound Interest Calculator
+     </title>
+    <link rel="stylesheet" href="style.css">
+  </head> 
+  <body> 
+      <div id="box">   
+        <label id="set">Interest Calculator</label>
+        <br><br>
+   <div class="radio">  <form>
+        <input type="radio" id="simple" name="fav" value="simple" onclick="showSimpleInterest()">
+        <label for="simple">Simple Interest</label>
+        <input type="radio" id="compound" name="fav" value="compound" onclick="showCompoundInterest()">
+        <label for="compound">Compound Interest</label> <br><br>    
+     </form>
+    </div>
+    <!--Simple Interest Section-->
+<div id="simpleinterest" class="container hidden">  
+       <h2>Simple Interest Calculator</h2> 
+      <form>
+        <label for="num">Principal Amount(Rs.): </label><br><br>
+        <input type="number" name="num" id="n1" required><br><br>
+        <label for="rate">Annual rate(%): </label><br><br> 
+        <input type="number" name="rate" id="n2" required><br><br>
+        <label for="value">Period Value:</label><br><br> 
+         <input type="number" name="value" id="n3" required><br><br>      
+    <label for="ans">Simple Interest(Rs.): </label><br><br>
+    <input type="number" name="ans" id="isResult" readonly><br><br>
+    <div class="container"> 
+    <button type="button" onclick="calculateSimpleInterest()">Calculate</button>
+     <button type="reset">Clear</button> 
+     </div>
+     </form>
+</div>
+     <!--Compound Interest Section-->
+<div id="compoundinterest" class="container hidden">
+          <h2>Compound Interest Calculator</h2> 
+      <form>
+      <label for="num">Principal Amount(Rs.): </label><br><br>
+        <input type="text" name="num" id="num1" required><br><br>
+        <label for="rate">Annual rate(%): </label><br><br> 
+        <input type="text" name="rate" id="num2" required><br><br>
+        <label for="unit1"></label>Compound Frequency<br><br>
+        <select id="unit">
+               <option value="monthly">Monthly</option>
+               <option value="quarters">Quaters</option>
+               <option value="semianually">Semi-Anually</option>
+               <option value="yearly">Yearly</option>
+        </select> 
+        <br><br>
+        <label for="value">Period Value:</label><br><br> 
+         <input type="text" name="value" id="num3" required><br>  
+    <br>
+       <label for="ans">Compound Interest: </label><br><br>
+    <input type="text" name="ans" id="isans" readonly>  
+    <br><br>    
+    <div class="container">
+     <button type="button" onclick="calculateCompoundInterest()">Calculate</button>
+     <button type="reset">Clear</button>
+     </div> 
+     </form>
+</div>
+ </div>  
+    <script>
+       function showSimpleInterest(){
+        document.getElementById('simpleinterest').classList.remove('hidden');
+document.getElementById('compoundinterest').classList.add('hidden'); 
+}
+      function showCompoundInterest(){
+     document.getElementById('simpleinterest').classList.add('hidden');
+document.getElementById('compoundinterest').classList.remove('hidden'); 
+   
+       }
+     function calculateSimpleInterest(){
+   const principle=parseFloat(document.getElementById("n1").value);
+ const annual=parseFloat(document.getElementById("n2").value);
+ const time=parseFloat(document.getElementById("n3").value);
+   if(!principle || !annual || !time){
+     alert("Please fill out all fields!");
+     return;
+    }
+   const simpleInterest=(principle*annual*time)/100;
+document.getElementById("isResult").value=simpleInterest.toFixed(2);
+    }
+    function calculateCompoundInterest(){
+   const principle=parseFloat(document.getElementById("num1").value);
+ const annual=parseFloat(document.getElementById("num2").value);
+ const time=parseFloat(document.getElementById("num3").value);
+const frequency=document.getElementById("unit").value;
+   if(!principle || !annual || !time || !frequency){
+     alert("Please fill out all fields!");
+     return;
+    }
+let n;
+switch(frequency){
+  case "monthly":
+      n=12;
+      break;
+   case "quarters":
+       n=4;
+       break;
+   case  "semianually":
+       n=2;
+       break;
+   case "yearly":
+       n=1;
+      break;
+   default:
+     alert("Invalid frequenct selected!");
+     return;
+}
+ const rate=annual/100;
+const amount=principle*Math.pow(1+rate/n,n*time);
+const compoundInterest=amount-principle;
+document.getElementById("isans").value=compoundInterest.toFixed(2);
+  }
+
+    </script> 
+  </body>
+</html>
